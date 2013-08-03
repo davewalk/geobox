@@ -1,5 +1,7 @@
 # GeoBox - A hackbox for geo stuff
 
+Props to [zhm](https://github.com/zhm/geobox) for the original. I've removed some things that I didn't need for my project.'
+
 ### Included in VM
 
 * Ubuntu 12.04 Precise Pangolin
@@ -22,7 +24,7 @@
 
 ### Installation
 
-    git clone https://github.com/zhm/geobox
+    git clone https://github.com/davewalk/geobox
     cd geobox
     git submodule init
     git submodule update
