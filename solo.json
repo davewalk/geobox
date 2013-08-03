@@ -3,7 +3,6 @@
     "recipe[git]",
     "recipe[apt]",
     "recipe[core]",
-    "recipe[ohai]",
-  ],
-  "user": "ubuntu"
+    "recipe[ohai]"
+  ]
 }

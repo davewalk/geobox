@@ -1,21 +1,17 @@
 require 'json'
 
-Vagrant::Config.run do |config|
+Vagrant.configure("2") do |config|
   config.vm.box = "precise"
 
-  config.vm.customize ["modifyvm", :id, "--memory", 1024]
+  config.vm.network :forwarded_port, guest: 80, host: 8000
+  config.vm.network :forwarded_port, guest: 3000, host: 3030
+  config.vm.network :forwarded_port, guest: 3001, host: 3001
+  config.vm.network :forwarded_port, guest: 4000, host: 4000
+  config.vm.network :forwarded_port, guest: 8080, host: 8080
 
-  config.vm.forward_port 22,   2222
-  config.vm.forward_port 80,   80
-  config.vm.forward_port 3000, 3030
-  config.vm.forward_port 3001, 3001
-  config.vm.forward_port 4000, 4000
-  config.vm.forward_port 5432, 5432
-  config.vm.forward_port 8080, 8080
+  config.vm.synced_folder "../", "/philly-hoods"
 
-  config.vm.network :hostonly, "22.22.22.22"
-
-  config.vm.synced_folder "../", "/src/philly-hoods"
+  config.vm.network :private_network, ip: "22.22.22.22"
 
   json = JSON.parse(File.open('solo.json').read)
 
