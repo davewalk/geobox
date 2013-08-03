@@ -15,6 +15,8 @@ Vagrant::Config.run do |config|
 
   config.vm.network :hostonly, "22.22.22.22"
 
+  config.vm.synced_folder "../", "/src/philly-hoods"
+
   json = JSON.parse(File.open('solo.json').read)
 
   config.vm.provision :chef_solo do |chef|
